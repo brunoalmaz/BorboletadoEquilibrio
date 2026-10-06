@@ -9,14 +9,6 @@
     --display:'Cormorant Garamond',Georgia,'Times New Roman',serif;
     --body:'Jost','Helvetica Neue',Arial,sans-serif;
   }
-  @media (prefers-color-scheme: light){
-    :root:not([data-theme="dark"]){
-      --bg:#ffffff; --card:#f1f1f1; --line:#dcdcdc;
-      --fg:#090909; --fg-dim:#3c3c3c; --fg-faint:#767676;
-      --pos:#0f9d64; --neg:#d6392f;
-      color-scheme:light;
-    }
-  }
   :root[data-theme="light"]{
     --bg:#ffffff; --card:#f1f1f1; --line:#dcdcdc;
     --fg:#090909; --fg-dim:#3c3c3c; --fg-faint:#767676;
@@ -205,16 +197,16 @@
   .source-row .val b{font-family:var(--display); font-size:17px; font-weight:500; color:var(--fg)}
 
   /* ---- content previews ---- */
-  .preview-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:30px; flex:1; align-content:center}
-  .preview{background:var(--card); border:1px solid var(--line); text-decoration:none; color:inherit; display:flex; flex-direction:column}
+  .preview-grid{display:grid; grid-template-columns:repeat(3,1fr); grid-auto-rows:1fr; gap:22px; margin-top:30px; flex:1; min-height:260px}
+  .preview{background:var(--card); border:1px solid var(--line); text-decoration:none; color:inherit; display:flex; flex-direction:column; min-height:0}
   .preview .open{font-size:11px; color:var(--fg-faint); letter-spacing:.06em; margin-top:12px; padding-top:12px; border-top:1px solid var(--line); transition:color .3s}
   .preview:hover .open{color:var(--fg)}
-  .frame{aspect-ratio:4/5; border-bottom:1px solid var(--line); position:relative; overflow:hidden}
+  .frame{flex:1; min-height:80px; border-bottom:1px solid var(--line); position:relative; overflow:hidden}
   .frame img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; transition:transform .7s cubic-bezier(.16,.8,.3,1), filter .7s; filter:grayscale(.25)}
   .frame .tag{position:absolute; top:12px; left:12px; font-size:10px; letter-spacing:.08em; text-transform:uppercase; padding:3px 9px; border:1px solid var(--line); background:var(--bg); color:var(--fg-dim); z-index:2}
   .preview-grid .preview:hover .frame img{transform:scale(1.08); filter:grayscale(0)}
   .preview-grid .preview:hover{transition-duration:.3s}
-  .pbody{padding:22px; display:flex; flex-direction:column; flex:1}
+  .pbody{padding:22px; display:flex; flex-direction:column; flex-shrink:0}
   .pbody .cap{font-size:14px; color:var(--fg); line-height:1.4}
   .pstats{display:flex; gap:16px; margin-top:14px; padding-top:14px; border-top:1px solid var(--line)}
   .pstats div{display:flex; flex-direction:column; gap:2px}
@@ -274,7 +266,6 @@
 
   /* ---- real brand art (photo of the actual logo/mark) flips for light theme ---- */
   .raster-mono{filter:none}
-  @media (prefers-color-scheme: light){ :root:not([data-theme="dark"]) .raster-mono{filter:invert(1)} }
   :root[data-theme="light"] .raster-mono{filter:invert(1)}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
